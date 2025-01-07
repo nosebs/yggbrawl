@@ -1,7 +1,7 @@
 import { t } from 'elysia'
 
 const agent = t.Object({
-	name: t.String(),
+    name: t.String(),
     version: t.Number()
 })
 

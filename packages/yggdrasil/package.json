@@ -1,0 +1,13 @@
+{
+  "name": "yggdrasil",
+  "version": "1.0.50",
+  "license": "MIT",
+  "dependencies": {
+    "elysia": "latest",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

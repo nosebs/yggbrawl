@@ -3,7 +3,7 @@ import { property } from './property'
 
 const user = t.Object({
     id: t.String(),
-	username: t.String(),
+    username: t.String(),
     properties: t.Array(property),
 })
 

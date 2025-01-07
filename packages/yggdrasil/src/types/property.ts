@@ -1,7 +1,7 @@
 import { t } from 'elysia'
 
 const property = t.Object({
-	name: t.String(),
+    name: t.String(),
     value: t.String()
 })
 

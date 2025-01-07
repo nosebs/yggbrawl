@@ -1,17 +1,19 @@
 {
-  "name": "yggts",
-  "version": "1.0.50",
-  "license": "MIT",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
-  },
-  "dependencies": {
-    "elysia": "latest",
-    "postgres": "^3.4.5"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
-}
+    "name": "yggserver",
+    "version": "0.1.0",
+    "type": "module",
+    "license": "MIT",
+    "workspaces": [
+      "packages/yggdrasil",
+      "packages/web"
+    ],
+    "homepage": "https://github.com/nosebs/yggserver",
+    "bugs": {
+      "url": "https://github.com/nosebs/yggserver/issues",
+      "email": "n1sebs@proton.me"
+    },
+    "scripts": {
+      "web:dev": "bun run --watch packages/web/src/index.tsx",
+      "web:yggdrasil": "bun run --watch packages/yggdrasil/src/index.ts"
+    }
+  }
