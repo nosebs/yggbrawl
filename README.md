@@ -1,3 +1,4 @@
-# Elysia with Bun runtime
+# yggserver
+
 
 https://minecraft.wiki/w/Yggdrasil
