@@ -1,5 +1,5 @@
 {
-  "name": "yggdrasil",
+  "name": "authserver",
   "version": "1.0.50",
   "license": "MIT",
   "dependencies": {

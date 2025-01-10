@@ -9,4 +9,12 @@ export abstract class Profile {
             } as ProfileT
         });
     }
+
+    static async getProfileByUsername(username: string) {
+        return (await sql`SELECT id,name FROM profiles WHERE name = ${username}`)[0]
+    }
+
+    static async getProfileById(id: string) {
+        return (await sql`SELECT id,name FROM profiles WHERE id = ${id}`)[0]
+    }
 }

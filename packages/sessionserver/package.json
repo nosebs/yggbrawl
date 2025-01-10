@@ -1,11 +1,10 @@
 {
-  "name": "web",
+  "name": "sessionserver",
   "version": "1.0.50",
   "license": "MIT",
   "dependencies": {
-    "@elysiajs/html": "^1.2.0",
-    "@kitajs/ts-html-plugin": "^4.1.1",
-    "elysia": "latest"
+    "elysia": "latest",
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
     "bun-types": "latest"

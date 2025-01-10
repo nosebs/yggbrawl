@@ -4,16 +4,19 @@
     "type": "module",
     "license": "MIT",
     "workspaces": [
-      "packages/yggdrasil",
-      "packages/web"
+        "packages/authserver",
+        "packages/sessionserver"
     ],
     "homepage": "https://github.com/nosebs/yggserver",
     "bugs": {
-      "url": "https://github.com/nosebs/yggserver/issues",
-      "email": "n1sebs@proton.me"
+        "url": "https://github.com/nosebs/yggserver/issues",
+        "email": "n1sebs@proton.me"
     },
     "scripts": {
-      "web:dev": "bun run --watch packages/web/src/index.tsx",
-      "web:yggdrasil": "bun run --watch packages/yggdrasil/src/index.ts"
+        "sessionserver:dev": "bun run --watch packages/sessionserver/src/index.ts",
+        "authserver:dev": "bun run --watch packages/authserver/src/index.ts"
+    },
+    "dependencies": {
+        "redis": "^4.7.0"
     }
-  }
+}

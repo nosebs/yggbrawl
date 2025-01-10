@@ -1,11 +1,11 @@
 import { Elysia } from "elysia";
 import { Exception, NOT_FOUND_MESSAGE } from "./types/exception";
 import { authenticate } from "./types/request/authenticate";
-import { authenticateResponse } from "./types/response/authenticateresponse";
+import { authenticateResponse } from "./types/response/authenticateResponse";
 import sql from "./sql";
 import { ForbiddenOperationException, INVALID_USERNAME_PASSWORD } from "./exceptions/forbiddenOperationException";
 import { refresh } from "./types/request/refresh";
-import { refreshResponse } from "./types/response/refreshresponse";
+import { refreshResponse } from "./types/response/refreshResponse";
 import { validate } from "./types/request/validate";
 import { signout } from "./types/request/signout";
 import { User as UserC } from "./controllers/user";
@@ -46,7 +46,9 @@ new Elysia()
       clientToken: body.clientToken,
       accessToken: await Token.create(user.id),
       availableProfiles: profiles,
-      selectedProfile: profiles[0]
+      ...(profiles[0] && {
+        selectedProfile: profiles[0]
+      })
     }
   }, {
     body: authenticate,
