@@ -6,7 +6,7 @@ import { redisClient } from "./redis";
 import { hasJoined } from "./types/request/hasJoined";
 import { hasJoinedResponse } from "./types/response/hasJoinedResponse";
 
-new Elysia()
+export const sessionServer = new Elysia()
     .onError(({ error, code, set }) => {
         if (code === 'NOT_FOUND') {
             set.status = "Not Found";

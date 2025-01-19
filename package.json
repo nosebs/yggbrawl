@@ -14,9 +14,16 @@
     },
     "scripts": {
         "sessionserver:dev": "bun run --watch packages/sessionserver/src/index.ts",
-        "authserver:dev": "bun run --watch packages/authserver/src/index.ts"
+        "authserver:dev": "bun run --watch packages/authserver/src/index.ts",
+        "main:dev": "bun run --watch packages/main/src/index.ts"
     },
     "dependencies": {
-        "redis": "^4.7.0"
+        "dotenv": "^16.4.7",
+        "drizzle-kit": "^0.30.1",
+        "drizzle-orm": "^0.38.3",
+        "drizzle-typebox": "^0.2.1",
+        "elysia": "^1.2.10",
+        "pg": "^8.13.1",
+        "uuid": "^11.0.5"
     }
 }

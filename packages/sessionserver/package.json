@@ -3,8 +3,9 @@
   "version": "1.0.50",
   "license": "MIT",
   "dependencies": {
-    "elysia": "latest",
-    "postgres": "^3.4.5"
+    "elysia": "^1.2.10",
+    "postgres": "^3.4.5",
+    "redis": "^4.7.0"
   },
   "devDependencies": {
     "bun-types": "latest"

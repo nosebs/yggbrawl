@@ -1,20 +1,29 @@
-import sql from "../sql";
+import { eq } from "drizzle-orm";
+import { db } from "../../../../database";
+import { profile } from "../../../../database/schema";
 import { Profile as ProfileT } from "../types/profile";
 export abstract class Profile {
     static async getUserProfiles(id: string): Promise<ProfileT[]> {
-        return (await sql`SELECT name,id FROM profiles WHERE userId = ${id}`).map((v) => {
-            return {
-              id: v.id,
-              name: v.name
-            } as ProfileT
-        });
+        return (
+            await db.select()
+                .from(profile)
+                .where(eq(profile.userId, id))
+        )
     }
 
     static async getProfileByUsername(username: string) {
-        return (await sql`SELECT id,name FROM profiles WHERE name = ${username}`)[0]
+        return (
+            await db.select()
+                .from(profile)
+                .where(eq(profile.name, username))
+        )[0]
     }
 
     static async getProfileById(id: string) {
-        return (await sql`SELECT id,name FROM profiles WHERE id = ${id}`)[0]
+        return (
+            await db.select()
+                .from(profile)
+                .where(eq(profile.id, id))
+        )[0]
     }
 }

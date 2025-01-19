@@ -1,11 +1,21 @@
-import sql from "../sql";
+import { eq } from "drizzle-orm";
+import { db } from "../../../../database";
+import { user } from "../../../../database/schema";
 
 export abstract class User {
     static async getByEmail(email: string) {
-        return (await sql`SELECT * FROM users WHERE email = ${email}`)[0];
+        return (
+            await db.select()
+                .from(user)
+                .where(eq(user.email, email))
+        )[0]
     }
 
     static async getById(id: string) {
-        return (await sql`SELECT * FROM users WHERE id = ${id}`)[0];
+        return (
+            await db.select()
+                .from(user)
+                .where(eq(user.id, id))
+        )[0]
     }
 }

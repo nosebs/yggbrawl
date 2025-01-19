@@ -1,20 +1,35 @@
-import sql from "../sql";
 import { randomBytes } from "crypto";
+import { db } from "../../../../database";
+import { profile, token } from "../../../../database/schema";
+import { eq } from "drizzle-orm";
 
 export abstract class Token {
     static async create(userId: string): Promise<string> {
-        return (await sql`INSERT INTO tokens (token, userId) VALUES (${randomBytes(24).toString("hex")}, ${userId}) RETURNING token`)[0].token
+        return (
+            await db.insert(token).values({
+                token: randomBytes(24).toString("hex"),
+                userId
+            }).returning({
+                token: token.token
+            })
+        )[0].token
     }
 
-    static async getUserIdByToken(token: string): Promise<string> {
-        return (await sql`SELECT userId FROM tokens WHERE token = ${token}`)[0].userid;
+    static async getUserIdByToken(_token: string): Promise<string | null> {
+        let user = (
+                    await db.select({ userId: token.userId })
+                        .from(token)
+                        .where(eq(token.token, _token))
+        )[0]
+        if(!user) return null
+        return user.userId
     }
 
-    static async delete(token: string): Promise<void> {
-        await sql`DELETE FROM tokens WHERE token = ${token}`
+    static async delete(_token: string): Promise<void> {
+        await db.delete(token).where(eq(token.token, _token))
     }
 
     static async deleteTokensByUserId(userId: string): Promise<void> {
-        await sql`DELETE FROM tokens WHERE userId = ${userId}`
+        await db.delete(token).where(eq(token.userId, userId))
     }
 }

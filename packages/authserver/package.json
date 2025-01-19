@@ -3,7 +3,7 @@
   "version": "1.0.50",
   "license": "MIT",
   "dependencies": {
-    "elysia": "latest",
+    "elysia": "^1.2.10",
     "postgres": "^3.4.5"
   },
   "devDependencies": {
